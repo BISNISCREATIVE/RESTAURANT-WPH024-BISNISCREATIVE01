@@ -7,15 +7,11 @@
   ],
   "builds": [
     {
-      "src": "index.html",
+      "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "dist"
       }
-    },
-    {
-      "src": "dist/client/node-build.mjs",
-      "use": "@vercel/node"
     }
   ]
 }
