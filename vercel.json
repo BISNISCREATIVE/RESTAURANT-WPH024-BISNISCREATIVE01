@@ -1,4 +1,10 @@
 {
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
   "builds": [
     {
       "src": "index.html",
@@ -6,12 +12,10 @@
       "config": {
         "distDir": "dist"
       }
-    }
-  ],
-  "rewrites": [
+    },
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "dist/server/node-build.mjs",
+      "use": "@vercel/node"
     }
   ]
 }
