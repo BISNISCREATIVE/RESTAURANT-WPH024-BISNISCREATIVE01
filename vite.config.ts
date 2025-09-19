@@ -7,7 +7,7 @@ import { createServer } from "./server";
 export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
-    port: 8080,
+    port: 3000,
     fs: {
       // Add '.' to the array to allow Vite to serve files from the project root,
       // which is where your index.html file is located.

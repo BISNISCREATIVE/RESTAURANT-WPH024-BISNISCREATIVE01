@@ -1,1 +1,0 @@
-import{a as r}from"./index-BxGMyTZD.js";async function e(a){const{data:t}=await r.post("/orders",a);return t?.data??t}async function n(){const{data:a}=await r.get("/orders");return a?.data??a}export{n as getOrders,e as placeOrder};
