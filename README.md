@@ -32,16 +32,16 @@ NODE_ENV="development"
 • Day.js	—	format	waktu/tanggal
 
 7) MVP Scope (Fitur Minimum) 
-1. Halaman	Menu	(Home):	daftar	makanan	&	minuman,	harga,	kategori,	rating,	foto.	
-2. Filter	&	Sort:	berdasarkan	kategori,	harga,	rating;	simpan	di	Redux.	
-3. Pencarian:	search	by	name/keyword	(client-side	atau	server-side).	
-4. Detail/Quick	View:	modal	atau	halaman	detail	sederhana	(opsional).	
-5. Keranjang	(Cart):	tambah,	ubah	qty,	hapus	item	—	Optimistic	UI.	
-6. Checkout	Sederhana:	form	nama/no	HP/alamat	(tanpa	payment	gateway).	
-7. Riwayat	Pesanan	(History):	daftar	pesanan	yang	pernah	dibuat	(sederhana).	
-8. State	Management:	server	state	via	React	Query,	UI	state	via	Redux.	
-9. Responsif:	mobile-first,	minimal	breakpoint	sm/md/lg.	
-10. Aksesibilitas:	alt	text,	focus	ring,	warna	kontras	cukup.
+• Halaman	Menu	(Home):	daftar	makanan	&	minuman,	harga,	kategori,	rating,	foto.	
+• Filter	&	Sort:	berdasarkan	kategori,	harga,	rating;	simpan	di	Redux.	
+• Pencarian:	search	by	name/keyword	(client-side	atau	server-side).	
+• Detail/Quick	View:	modal	atau	halaman	detail	sederhana	(opsional).	
+• Keranjang	(Cart):	tambah,	ubah	qty,	hapus	item	—	Optimistic	UI.	
+• Checkout	Sederhana:	form	nama/no	HP/alamat	(tanpa	payment	gateway).	
+• Riwayat	Pesanan	(History):	daftar	pesanan	yang	pernah	dibuat	(sederhana).	
+• State	Management:	server	state	via	React	Query,	UI	state	via	Redux.	
+• Responsif:	mobile-first,	minimal	breakpoint	sm/md/lg.	
+• Aksesibilitas:	alt	text,	focus	ring,	warna	kontras	cukup.
     
 5) Pemisahan State: Redux vs React Query 
 • React	Query	(Server	State):	menu,	kategori,	detail	item,	order	list.	
