@@ -31,7 +31,7 @@ NODE_ENV="development"
 • Optimistic	UI	—	UX	responsif	(mis.	tambah/hapus	cart)	
 • Day.js	—	format	waktu/tanggal
 
-7) MVP Scope (Fitur Minimum) 
+6) MVP Scope (Fitur Minimum) 
 • Halaman	Menu	(Home):	daftar	makanan	&	minuman,	harga,	kategori,	rating,	foto.	
 • Filter	&	Sort:	berdasarkan	kategori,	harga,	rating;	simpan	di	Redux.	
 • Pencarian:	search	by	name/keyword	(client-side	atau	server-side).	
@@ -43,7 +43,7 @@ NODE_ENV="development"
 • Responsif:	mobile-first,	minimal	breakpoint	sm/md/lg.	
 • Aksesibilitas:	alt	text,	focus	ring,	warna	kontras	cukup.
     
-5) Pemisahan State: Redux vs React Query 
+7) Pemisahan State: Redux vs React Query 
 • React	Query	(Server	State):	menu,	kategori,	detail	item,	order	list.	
 • Redux	Toolkit	(Client/UI	State):	filters,	sort,	search	query,	cart,	modal	open/close.
 
@@ -78,19 +78,19 @@ src/
 #	images/icons	jika	perlu	
 #	env,	constants,	route	paths
 
-9) Persiapan Project (Langkah Cepat) 
-11. Inisialisasi	project:	Vite	(disarankan)	→	`npm	create	vite@latest	restaurant-frontend	--	--template	react-ts`	
-12. Masuk	folder	&	install	deps:	`cd	restaurant-frontend	&&	npm	i`	
-13. Install	Tailwind	CSS:	sesuai	dokumentasi	Tailwind	(init	&	konfigurasi).	
-14. Install	shadcn/ui:	setup	sesuai	docs;	generate	komponen	yang	dibutuhkan	(Button,	
+8) Persiapan Project (Langkah Cepat) 
+• Inisialisasi	project:	Vite	(disarankan)	→	`npm	create	vite@latest	restaurant-frontend	--	--template	react-ts`	
+• Masuk	folder	&	install	deps:	`cd	restaurant-frontend	&&	npm	i`	
+• Install	Tailwind	CSS:	sesuai	dokumentasi	Tailwind	(init	&	konfigurasi).	
+• Install	shadcn/ui:	setup	sesuai	docs;	generate	komponen	yang	dibutuhkan	(Button,	
 Input,	Card,	Dialog).	
-15. Install	Redux	Toolkit	&	React	Query:	`npm	i	@reduxjs/toolkit	react-redux	
+• Install	Redux	Toolkit	&	React	Query:	`npm	i	@reduxjs/toolkit	react-redux	
 @tanstack/react-query	axios	dayjs`	
-16. Siapkan	`axios`	instance	(`/services/api/axios.ts`)	dan	baseURL	dari	backend.	
-17. Buat	store	Redux	(`/features/store.ts`)	dan	slice	(cart,	filters).	
-18. Bungkus	App	dengan	`<Provider>`	(Redux)	dan	`<QueryClientProvider>`	(React	Query).
+• Siapkan	`axios`	instance	(`/services/api/axios.ts`)	dan	baseURL	dari	backend.	
+• Buat	store	Redux	(`/features/store.ts`)	dan	slice	(cart,	filters).	
+• Bungkus	App	dengan	`<Provider>`	(Redux)	dan	`<QueryClientProvider>`	(React	Query).
     
-8) Environment & Konfigurasi 
+9) Environment & Konfigurasi 
 • Buat	`.env`	dengan	`VITE_API_BASE_URL=http://localhost:3000`	(sesuaikan).	
 • Axios	instance	membaca	`import.meta.env.VITE_API_BASE_URL`.	
 • Hindari	hard-code	URL	API	di	komponen.
