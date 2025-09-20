@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "@/services/api/axios";
 import type { MenuItem } from "@/types";
 
+import { getFallbackImage } from "@/lib/fallbackImage";
+
 function normalizeMenu(
   raw: any,
   restaurantId?: number,
@@ -11,12 +13,10 @@ function normalizeMenu(
   const id = raw?.id ?? raw?._id ?? raw?.menuId ?? raw?.foodId ?? "";
   const name = raw?.foodName ?? raw?.name ?? raw?.title ?? "Untitled";
   const price = Number(raw?.price ?? raw?.cost ?? 0) || 0;
-  const image =
-    raw?.image ??
-    raw?.imageUrl ??
-    raw?.photo ??
-    fallbackImage ??
-    "/placeholder.svg";
+  let image =
+    raw?.image ?? raw?.imageUrl ?? raw?.photo ?? fallbackImage ?? undefined;
+  if (!image)
+    image = getFallbackImage(name, raw?.category ?? raw?.type, restaurantName);
   return {
     id: String(id),
     name: String(name),

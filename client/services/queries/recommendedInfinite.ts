@@ -17,6 +17,7 @@ export function useRecommendedInfinite(pageSize = 12, q?: string) {
         const res = await axios.get("/resto", { params });
         const payload = res.data?.data ?? res.data ?? {};
         const list = payload?.restaurants ?? [];
+        const { getFallbackImage } = await import("@/lib/fallbackImage");
         const mapped: MenuItem[] = (list || []).map((resto: any) => ({
           id: `resto-${resto.id}`,
           name: resto.name ?? "Restaurant",
@@ -24,8 +25,13 @@ export function useRecommendedInfinite(pageSize = 12, q?: string) {
           image:
             Array.isArray(resto.images) && resto.images.length
               ? resto.images[0]
-              : (resto.logo ?? "/placeholder.svg"),
-          category: null,
+              : (resto.logo ??
+                getFallbackImage(
+                  resto.name,
+                  resto.category,
+                  resto.description,
+                )),
+          category: resto?.category ?? null,
           restaurantId: Number(resto.id) || 0,
           restaurantName: resto.name ?? null,
         }));

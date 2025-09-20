@@ -1,6 +1,6 @@
 MVP Guide – Restaurant Web Frontend 
 (React + TypeScript) 
-Diperuntukkan	untuk:	Mentee	–	Frontend	--- LINK DEPLOYMENT
+Diperuntukkan	untuk:	Mentee	–	Frontend	--- LINK DEPLOYMENT: https://dff5879ed9ef43a8a40cd2c1572333ae-main.projects.builder.my/
 
 1) Tujuan & Ruang Lingkup 
 Membangun	Frontend	MVP	untuk	aplikasi	Restaurant	yang	terhubung	ke	backend.	Fokus	

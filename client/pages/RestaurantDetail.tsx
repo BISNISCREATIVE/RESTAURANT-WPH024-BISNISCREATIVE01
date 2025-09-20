@@ -4,6 +4,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { useRestaurantDetailQuery } from "@/services/queries/resto";
 import { Button } from "@/components/ui/button";
 import { useMemo, useState } from "react";
+import { getFallbackImage } from "@/lib/fallbackImage";
 import ReviewModal from "@/components/ReviewModal";
 import ProductCard from "@/components/ProductCard";
 import { useAppSelector } from "@/store";
@@ -24,9 +25,14 @@ export default function RestaurantDetail() {
   const menus = useMemo(() => {
     const list = (data?.menus ?? []) as any[];
     if (tab === "all") return list;
-    return list.filter(
-      (m) => (m.category || "").toLowerCase() === tab.toLowerCase(),
-    );
+    if (tab === "Drink") {
+      const rx =
+        /(drink|drinks|minuman|beverage|coffee|kopi|tea|teh|matcha|juice|jus|smoothie|soda|soft ?drink|cola|boba|bubble|milk tea|milkshake|shake|chocolate|coklat|beer|wine|cocktail|mocktail|water|air mineral)/i;
+      return list.filter((m) =>
+        rx.test([m?.category, m?.type, m?.name].filter(Boolean).join(" ")),
+      );
+    }
+    return list.filter((m) => (m.category || "").toLowerCase() === "food");
   }, [data, tab]);
 
   return (
@@ -49,8 +55,14 @@ export default function RestaurantDetail() {
                   src={
                     data.images?.[0] ||
                     data.menus?.[0]?.image ||
-                    "/placeholder.svg"
+                    getFallbackImage(data.name, data.category as any)
                   }
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = getFallbackImage(
+                      data.name,
+                      data.category as any,
+                    );
+                  }}
                   alt={data.name}
                   className="rounded-2xl w-full h-[300px] md:h-[360px] object-cover md:col-span-2"
                 />
@@ -59,8 +71,14 @@ export default function RestaurantDetail() {
                     src={
                       data.images?.[1] ||
                       data.menus?.[1]?.image ||
-                      "/placeholder.svg"
+                      getFallbackImage(data.name, data.menus?.[1]?.category)
                     }
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = getFallbackImage(
+                        data.name,
+                        data.menus?.[1]?.category,
+                      );
+                    }}
                     alt="thumb1"
                     className="rounded-2xl w-full h-[110px] object-cover"
                   />
@@ -68,8 +86,14 @@ export default function RestaurantDetail() {
                     src={
                       data.images?.[2] ||
                       data.menus?.[2]?.image ||
-                      "/placeholder.svg"
+                      getFallbackImage(data.name, data.menus?.[2]?.category)
                     }
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = getFallbackImage(
+                        data.name,
+                        data.menus?.[2]?.category,
+                      );
+                    }}
                     alt="thumb2"
                     className="rounded-2xl w-full h-[110px] object-cover"
                   />
@@ -77,8 +101,14 @@ export default function RestaurantDetail() {
                     src={
                       data.images?.[3] ||
                       data.menus?.[3]?.image ||
-                      "/placeholder.svg"
+                      getFallbackImage(data.name, data.menus?.[3]?.category)
                     }
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = getFallbackImage(
+                        data.name,
+                        data.menus?.[3]?.category,
+                      );
+                    }}
                     alt="thumb3"
                     className="rounded-2xl w-full h-[110px] object-cover"
                   />
@@ -87,7 +117,14 @@ export default function RestaurantDetail() {
 
               <div className="mt-6 flex items-center gap-4">
                 <img
-                  src={data.logo || data.images?.[0] || "/placeholder.svg"}
+                  src={
+                    data.logo || data.images?.[0] || getFallbackImage(data.name)
+                  }
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = getFallbackImage(
+                      data.name,
+                    );
+                  }}
                   className="h-20 w-20 rounded-full object-cover"
                   alt="logo"
                 />
@@ -140,9 +177,12 @@ export default function RestaurantDetail() {
                       id: m.id,
                       name: m.name,
                       price: m.price,
-                      image: m.image,
+                      image:
+                        m.image ||
+                        getFallbackImage(m.name, m.category, data.name),
                       category: m.category,
                       restaurantId: data.id,
+                      restaurantName: data.name,
                     }}
                   />
                 ))}

@@ -28,22 +28,7 @@ export default function Index() {
     loadMore,
   } = useRecommendedInfinite(12, q);
 
-  // auto load when scrolling near bottom
-  const sentinelRef = useRef<HTMLDivElement | null>(null);
-  useEffect(() => {
-    const el = sentinelRef.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && hasMore && !loadingMore) loadMore();
-        });
-      },
-      { root: null, rootMargin: "200px" },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [sentinelRef.current, hasMore, loadingMore, loadMore]);
+  // Load more intentionally via button only (no auto infinite-scroll)
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -229,7 +214,6 @@ export default function Index() {
               {hasMore ? (loadingMore ? "Loading..." : "Show More") : "No more"}
             </Button>
           </div>
-          <div ref={sentinelRef} />
         </div>
       </main>
 

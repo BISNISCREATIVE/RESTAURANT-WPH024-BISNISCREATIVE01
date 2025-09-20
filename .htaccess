@@ -4,7 +4,7 @@ RewriteBase /padin/reastaurant/
 RewriteRule ^index\.html$ - [L]
 
 Aturan untuk proxy API
-RewriteRule ^api/(.*)$ https://www.google.com/search?q=https://foody-api-xi.vercel.app/api/%241 [P,L]
+RewriteRule ^api/(.*)$ https://www.google.com/search?q=https://foody-api-xi.vercel.app/%241 [P,L]
 
 Aturan untuk perutean aplikasi SPA
 RewriteCond %{REQUEST_FILENAME} !-f

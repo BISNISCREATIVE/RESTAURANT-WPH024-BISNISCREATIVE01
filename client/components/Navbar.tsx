@@ -42,12 +42,26 @@ export default function Navbar({
       <header className={headerClass}>
         <div className="mx-auto max-w-6xl px-4 h-16 flex items-center gap-3">
           <Link to="/" className="flex items-center gap-2">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets%2F54858901b0c442e6a38e6cc906052164%2F462b12e4225140b88803a67447d747f3?format=webp&width=800"
-              alt="Foody"
-              className="w-8 h-8"
+            <span
+              aria-hidden
+              className={`inline-block w-8 h-8 transition-colors ${isScrolled ? "text-red-600" : "text-white"}`}
+              style={{
+                backgroundColor: "currentColor",
+                WebkitMaskImage:
+                  "url(https://cdn.builder.io/api/v1/image/assets%2F54858901b0c442e6a38e6cc906052164%2F462b12e4225140b88803a67447d747f3?format=webp&width=800)",
+                maskImage:
+                  "url(https://cdn.builder.io/api/v1/image/assets%2F54858901b0c442e6a38e6cc906052164%2F462b12e4225140b88803a67447d747f3?format=webp&width=800)",
+                WebkitMaskRepeat: "no-repeat",
+                maskRepeat: "no-repeat",
+                WebkitMaskSize: "contain",
+                maskSize: "contain",
+                WebkitMaskPosition: "center",
+                maskPosition: "center",
+              }}
             />
-            <span className="font-extrabold text-2xl tracking-tight">
+            <span
+              className={`font-extrabold text-2xl tracking-tight transition-colors ${isScrolled ? "text-red-600" : "text-white"}`}
+            >
               Foody
             </span>
           </Link>

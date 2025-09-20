@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { formatCurrency } from "@/lib/format";
+import { getFallbackImage } from "@/lib/fallbackImage";
 import type { MenuItem } from "@/types";
 import { Minus, Plus } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "@/store";
@@ -57,9 +58,20 @@ export default function ProductCard({
   return (
     <div className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-150">
       <img
-        src={item.image || "/placeholder.svg"}
+        src={
+          item.image ||
+          getFallbackImage(
+            item.name,
+            item.category as any,
+            item.restaurantName as any,
+          )
+        }
         onError={(e) => {
-          (e.target as HTMLImageElement).src = "/placeholder.svg";
+          (e.target as HTMLImageElement).src = getFallbackImage(
+            item.name,
+            item.category as any,
+            item.restaurantName as any,
+          );
         }}
         alt={item.name}
         className="h-36 w-full object-cover"
