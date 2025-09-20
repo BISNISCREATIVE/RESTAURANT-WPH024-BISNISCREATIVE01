@@ -177,11 +177,9 @@ export default function RestaurantDetail() {
                       id: m.id,
                       name: m.name,
                       price: m.price,
-                      image:
-                        m.image ||
-                        getFallbackImage(m.name, m.category, data.name),
                       category: m.category,
                       restaurantId: data.id,
+                      imageUrl: m.image || getFallbackImage(m.name, m.category, data.name),
                       restaurantName: data.name,
                     }}
                   />
